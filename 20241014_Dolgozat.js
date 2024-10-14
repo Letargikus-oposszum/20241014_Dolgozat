@@ -50,27 +50,26 @@ let input4 = await input('Kérem a (min) pontot: ');
 let input5 = await input('Kérem a (max) pontot: ');
 
 function gradeCalculator(score, maximum) {
-    let gradePercent = (score/maximum)*100;
-    let americanGrade = "";
-    if (0 <= gradePercent < 50){
-        americanGrade = "F";
+    if (maximum === 0) {
+        return 'F'; // Ha a maximális pontszám 0, az értékelés F
     }
-    else if (50 < gradePercent <= 60){
-        americanGrade = "E";
+
+    const percentage = (score / maximum) * 100;
+
+    if (percentage >= 90) {
+        return 'A';
+    } else if (percentage >= 80) {
+        return 'B';
+    } else if (percentage >= 70) {
+        return 'C';
+    } else if (percentage >= 60) {
+        return 'D';
+    } else if (percentage >= 50) {
+        return 'E';
+    } else {
+        return 'F';
     }
-    else if (60 < gradePercent <= 70){
-        americanGrade = "D";
-    }
-    else if (70 < gradePercent <= 80){
-        americanGrade = "C";
-    }
-    else if (80 < gradePercent <= 90){
-        americanGrade = "B";
-    }
-    else if (90 < gradePercent <= 100){
-        americanGrade = "A";
-    }
-    return americanGrade;
 }
+
 
 console.log(gradeCalculator(input4, input5));
